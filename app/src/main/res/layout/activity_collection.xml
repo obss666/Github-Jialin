@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include android:id="@+id/top_bar" layout="@layout/layout_top_bar"/>
+
+        <Button
+            android:id="@+id/saveButton"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:text="保存"
+            android:textColor="@color/blue"
+            android:textSize="15sp"
+            android:backgroundTint="@color/white"
+            android:layout_alignParentRight="true"/>
+
+        <include
+            android:id="@+id/bar_shadow"
+            android:layout_width="match_parent"
+            android:layout_height="4dp"
+            android:layout_below="@+id/top_bar"
+            layout="@layout/layout_bar_shadow" />
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/collectionNestedScrollView"
+            android:layout_below="@+id/top_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:overScrollMode="always">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:background="#F2EDED">
+                </View>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="已选择"
+                    android:padding="20dp"
+                    android:textSize="20sp"/>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/selectedRecyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:background="#F2EDED">
+                </View>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="选择仓库"
+                    android:padding="20dp"
+                    android:textSize="20sp"/>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/unselectedRecyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+    </RelativeLayout>
+    <ProgressBar
+        android:id="@+id/loadingProgressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"/>
+</RelativeLayout>

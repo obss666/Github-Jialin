@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:name=".ClientApplication"
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="Github-Jialin"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Githubjialin"
+        tools:targetApi="31">
+        <activity
+            android:name=".ui.activity.showActivity.OrganizationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activity.showActivity.DiscussActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activity.showActivity.PullRequestsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activity.showActivity.IssuesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activity.showActivity.SettingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activity.showActivity.CollectionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activity.h5activity.RepoDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activity.showActivity.MyRepositoriesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activity.showActivity.StarsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activity.h5activity.ProjectsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activity.showActivity.ProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activity.showActivity.RepositoriesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activity.showActivity.UsersActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activity.SearchActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activity.MainActivity"
+            android:exported="false"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".ui.activity.h5activity.LoginWebActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activity.LoginActivity"
+            android:exported="true"
+            android:windowSoftInputMode="adjustPan">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

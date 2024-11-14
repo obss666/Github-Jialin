@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <include android:id="@+id/top_bar" layout="@layout/layout_top_bar"/>
+
+        <include
+            android:id="@+id/bar_shadow"
+            android:layout_width="match_parent"
+            android:layout_height="4dp"
+            layout="@layout/layout_bar_shadow" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/signOutCardView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="退出登陆"
+                android:textSize="18sp"
+                android:textColor="@color/blue"
+                android:padding="10dp"
+                android:gravity="center"
+                android:background="@drawable/border_button" />
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+    <ProgressBar
+        android:id="@+id/loadingProgressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"/>
+</RelativeLayout>

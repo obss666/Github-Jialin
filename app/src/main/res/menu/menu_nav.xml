@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single"
+        android:id="@+id/nav_menu">
+        <item
+            android:id="@+id/profile"
+            android:icon="@drawable/ic_person_black"
+            android:title="@string/profile" />
+        <item
+            android:id="@+id/repositories"
+            android:icon="@drawable/ic_repo"
+            android:title="@string/repository" />
+        <item
+            android:id="@+id/projects"
+            android:icon="@drawable/ic_projects_black"
+            android:title="@string/project" />
+        <item
+            android:id="@+id/stars"
+            android:icon="@drawable/ic_star"
+            android:title="@string/star" />
+        <item
+            android:id="@+id/settings"
+            android:icon="@drawable/ic_setting"
+            android:title="@string/setting" />
+    </group>
+</menu>
