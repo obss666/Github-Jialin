@@ -12,7 +12,7 @@ class ClientApplication : Application() {
 
         const val clientSecret = "9487bd110d13fbdb5c04ca413250d257223ef758"
 
-        //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
+        //
 
         const val TOKEN : String = ""
 
