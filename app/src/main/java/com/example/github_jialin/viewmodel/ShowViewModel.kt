@@ -12,6 +12,7 @@ class ShowViewModel : ViewModel() {
         const val STAR: Int = 2
         const val SEARCH_REPO: Int = 3
         const val SEARCH_USER: Int = 4
+        const val POPULAR_REPO: Int = 5
     }
 
     private val getUserLiveData = MutableLiveData<String>()
@@ -19,6 +20,7 @@ class ShowViewModel : ViewModel() {
     private val getStarsLiveData = MutableLiveData<String>()
     private val getSearchRepoLiveData = MutableLiveData<String>()
     private val getSearchUserLiveData = MutableLiveData<String>()
+    private val getPopularRepoLiveData = MutableLiveData<String>()
 
 
     val userLiveData = getUserLiveData.switchMap { id ->
@@ -41,6 +43,10 @@ class ShowViewModel : ViewModel() {
         Repository.getSearchUsers(query)
     }
 
+    val popularRepoLiveData = getPopularRepoLiveData.switchMap {
+        Repository.getPopularRepos()
+    }
+
 
     fun refresh(content: String, type: Int) {
        when (type){
@@ -49,6 +55,7 @@ class ShowViewModel : ViewModel() {
            STAR-> getStarsLiveData.value = content
            SEARCH_REPO-> getSearchRepoLiveData.value = content
            SEARCH_USER-> getSearchUserLiveData.value = content
+           POPULAR_REPO-> getPopularRepoLiveData.value = content
        }
     }
 

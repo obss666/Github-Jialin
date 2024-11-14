@@ -20,4 +20,7 @@ interface SearchService {
     fun searchUsers(
         @Query("q") query: String,
     ): Call<SearchUserResponse>
+
+    @GET("search/repositories?q=stars:%3E1&sort=stars&order=desc")
+    fun searchPopularRepositories(): Call<SearchReposResponse>
 }

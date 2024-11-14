@@ -35,11 +35,13 @@
             </RelativeLayout>
         </androidx.appcompat.widget.Toolbar>
 
-        <include
+        <View
+            android:layout_below="@+id/mainToolbar"
+            android:id="@+id/shadow_line"
             android:layout_width="match_parent"
             android:layout_height="4dp"
-            android:layout_below="@+id/mainToolbar"
-            layout="@layout/layout_bar_shadow" />
+            android:background="@drawable/bar_shadow">
+        </View>
 
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/mainViewPager"

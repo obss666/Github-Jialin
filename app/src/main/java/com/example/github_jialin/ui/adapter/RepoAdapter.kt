@@ -14,7 +14,7 @@ import com.example.github_jialin.ui.activity.h5activity.RepoDetailActivity
 import de.hdodenhof.circleimageview.CircleImageView
 
 class RepoAdapter(private val activity: Activity,
-    private val repoList: MutableList<RepoInfo>)
+    private val repoList: MutableList<RepoInfo>, private val layoutResId: Int)
     : RecyclerView.Adapter<RepoAdapter.ViewHolder>() {
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -28,7 +28,7 @@ class RepoAdapter(private val activity: Activity,
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_repo, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(layoutResId, parent, false)
         val holder = ViewHolder(view)
         holder.itemView.setOnClickListener {
             if(holder.repoUrl.isNotEmpty()) {

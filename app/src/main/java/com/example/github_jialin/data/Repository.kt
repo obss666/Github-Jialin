@@ -57,6 +57,15 @@ object Repository {
         }
     }
 
+    fun getPopularRepos() = fire(Dispatchers.IO) {
+        val popularReposResponse = GithubNetWork.searchPopularRepos()
+        if (popularReposResponse.total_count!= 0) {
+            Result.success(popularReposResponse)
+        } else {
+            Result.failure(RuntimeException("response fail"))
+        }
+    }
+
     private fun <T> fire(context: CoroutineContext, block: suspend () -> Result<T>) =
         liveData<Result<T>>(context) {
             val result = try {

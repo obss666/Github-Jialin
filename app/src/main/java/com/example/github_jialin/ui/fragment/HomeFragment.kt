@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.github_jialin.ClientApplication
 import com.example.github_jialin.R
+import com.example.github_jialin.ui.activity.MainActivity
 import com.example.github_jialin.ui.activity.showActivity.PullRequestsActivity
 import com.example.github_jialin.ui.activity.showActivity.CollectionActivity
 import com.example.github_jialin.ui.activity.showActivity.DiscussActivity
@@ -75,15 +76,6 @@ class HomeFragment : Fragment() {
         }
 
         mHomeNestedScrollView.overScrollMode = View.OVER_SCROLL_IF_CONTENT_SCROLLS
-        mHomeNestedScrollView.viewTreeObserver.addOnScrollChangedListener {
-            val scrollY = mHomeNestedScrollView.scrollY
-            val shadowLine = requireActivity().findViewById<View>(R.id.shadow_line)
-            if (scrollY > 0) {
-                shadowLine.visibility = View.VISIBLE
-            } else {
-                shadowLine.visibility = View.GONE
-            }
-        }
 
         //我的工作
         issuesItem.setOnClickListener {
@@ -134,6 +126,15 @@ class HomeFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
+        mHomeNestedScrollView.viewTreeObserver.addOnScrollChangedListener {
+            val scrollY = mHomeNestedScrollView.scrollY
+            val activity = activity as? MainActivity
+            if (scrollY > 0) {
+                activity?.setShadowVisibility(true)
+            } else {
+                activity?.setShadowVisibility(false)
+            }
+        }
         refresh()
     }
 

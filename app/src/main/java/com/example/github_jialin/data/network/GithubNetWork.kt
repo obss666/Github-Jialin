@@ -24,6 +24,7 @@ object GithubNetWork {
     private val searchService = ServiceCreator.create<SearchService>()
     suspend fun searchRepos(query: String) = searchService.searchRepositories(query).await()
     suspend fun searchUsers(query: String) = searchService.searchUsers(query).await()
+    suspend fun searchPopularRepos() = searchService.searchPopularRepositories().await()
 
 
     private suspend fun <T> Call<T>.await(): T {

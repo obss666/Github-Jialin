@@ -3,6 +3,7 @@ package com.example.github_jialin.ui.activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
+import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.content.res.AppCompatResources
@@ -36,6 +37,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var mTabLayout: TabLayout
     private lateinit var mViewPager2: ViewPager2
     private lateinit var mToolbar: Toolbar
+    private lateinit var shadowLine: View
     private lateinit var mLoginName: TextView
     private lateinit var mAvatarImage: CircleImageView
     private lateinit var mDrawerLayout: DrawerLayout
@@ -56,6 +58,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         mToolbar = findViewById(R.id.mainToolbar)
+        shadowLine = findViewById(R.id.shadow_line)
         mTabLayout = findViewById(R.id.mainTabLayout)
         mViewPager2 = findViewById(R.id.mainViewPager)
         mLoginName = findViewById(R.id.loginNameMainTitle)
@@ -172,5 +175,13 @@ class MainActivity : AppCompatActivity() {
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_main_toolbar, menu)
         return true
+    }
+
+    fun setShadowVisibility(visible: Boolean) {
+        if (visible) {
+            shadowLine.visibility = View.VISIBLE
+        } else {
+            shadowLine.visibility = View.GONE
+        }
     }
 }

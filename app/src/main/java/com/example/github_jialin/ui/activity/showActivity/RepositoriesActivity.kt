@@ -31,7 +31,7 @@ class RepositoriesActivity : BaseShowActivity() {
 
         showRecyclerView = findViewById(R.id.showRecyclerView)
         val layoutManager = LinearLayoutManager(this)
-        val adapter = RepoAdapter(this, mutableListOf())
+        val adapter = RepoAdapter(this, mutableListOf(), R.layout.item_repo)
         showRecyclerView.layoutManager = layoutManager
         showRecyclerView.adapter = adapter
 
