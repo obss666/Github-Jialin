@@ -15,11 +15,13 @@ import com.example.github_jialin.ClientApplication
 import com.example.github_jialin.R
 import com.example.github_jialin.utils.showToast
 import com.example.github_jialin.viewmodel.LoginViewModel
+import com.example.github_jialin.viewmodel.ShowViewModel
 
 
 class LoginActivity : AppCompatActivity() {
 
     private val mViewModel by lazy { ViewModelProvider(this).get(LoginViewModel::class.java) }
+    private val showViewModel by lazy { ViewModelProvider(this).get(ShowViewModel::class.java) }
 
 //    private lateinit var startForResultLauncher: ActivityResultLauncher<Intent>
 
@@ -29,10 +31,7 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var mAutoLoginCheckBox: CheckBox
     private lateinit var mRememberPasswordCheckBox: CheckBox
 
-    private fun checkLogin() : Boolean {
-//        mViewModel.getPassword() == "123456"
-        return true
-    }
+    private fun checkLogin() = mViewModel.getPassword() == "123456"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -66,16 +65,28 @@ class LoginActivity : AppCompatActivity() {
 //            intent.putExtra("url", getOAuth2Url);
 //            startForResultLauncher.launch(intent)
             if(checkLogin()) {
+                showViewModel.refresh(mAccountEditText.text.toString(), ShowViewModel.USER)
+            } else {
+                "用户名或密码错误".showToast(this)
+            }
+        }
+
+        showViewModel.userLiveData.observe(this) { result ->
+            val user = result.getOrNull()
+            if (user != null) {
                 mViewModel.saveLoginInfo(mAccountEditText.text.toString(), mPasswordEditText.text.toString(),
                     mAutoLoginCheckBox.isChecked, mRememberPasswordCheckBox.isChecked)
                 ClientApplication.USERNAME = mAccountEditText.text.toString()
+                "登陆成功".showToast(this)
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
                 finish()
             } else {
                 "用户不存在".showToast(this)
+                result.exceptionOrNull()?.printStackTrace()
             }
         }
+
 
         if(mViewModel.getRememberPasswordStatus()) {
             mRememberPasswordCheckBox.isChecked = true
