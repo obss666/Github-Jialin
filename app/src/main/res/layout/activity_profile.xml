@@ -27,7 +27,7 @@
                     android:id="@+id/nameTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="姓名: "
+                    android:text="@string/profile_name"
                     android:textSize="20sp"
                     android:textStyle="bold" />
                 <TextView
@@ -47,7 +47,7 @@
                     android:id="@+id/bioTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="个人简介: "
+                    android:text="@string/profile_bio"
                     android:textSize="20sp"
                     android:textStyle="bold" />
                 <TextView
@@ -67,7 +67,7 @@
                     android:id="@+id/companyTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="公司: "
+                    android:text="@string/profile_company"
                     android:textStyle="bold"
                     android:textSize="20sp"/>
                 <TextView
@@ -87,7 +87,7 @@
                     android:id="@+id/locationTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="地区: "
+                    android:text="@string/profile_location"
                     android:textSize="20sp"
                     android:textStyle="bold" />
                 <TextView
@@ -107,7 +107,7 @@
                     android:id="@+id/blogTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="博客: "
+                    android:text="@string/profile_blog"
                     android:textSize="20sp"
                     android:textStyle="bold" />
                 <TextView
@@ -128,7 +128,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="20sp"
-                    android:text="邮箱: "
+                    android:text="@string/profile_email"
                     android:textStyle="bold" />
                 <TextView
                     android:id="@+id/emailValueTextView"

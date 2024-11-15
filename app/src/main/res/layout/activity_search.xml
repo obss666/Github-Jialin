@@ -26,7 +26,7 @@
             android:layout_marginEnd="10dp"
             android:paddingStart="10dp"
             android:paddingEnd="10dp"
-            android:hint="搜索Github"
+            android:hint="@string/search_in_github"
             android:importantForAutofill="no"
             android:textSize="20sp"
             android:singleLine="true" />
@@ -94,7 +94,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="近期搜索"
+                android:text="@string/search_record"
                 android:textStyle="bold"
                 android:layout_weight="1"
                 android:layout_marginStart="20dp"
@@ -103,7 +103,7 @@
                 android:id="@+id/deleteSearchRecordButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="清除"
+                android:text="@string/clear"
                 android:textSize="15sp"
                 android:textColor="@color/blue"
                 android:backgroundTint="@color/white" />
@@ -124,7 +124,7 @@
             android:id="@+id/findValueTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="查找您的内容"
+            android:text="@string/search_bg_text"
             android:textSize="50dp"/>
     </LinearLayout>
 

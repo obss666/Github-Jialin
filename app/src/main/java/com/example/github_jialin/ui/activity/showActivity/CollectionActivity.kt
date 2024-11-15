@@ -72,15 +72,8 @@ class CollectionActivity : BaseShowActivity() {
             }
         }
 
-        selectedAdapter.setOnItemClickListener { position ->
-            val currentTime = System.currentTimeMillis()
-            if (currentTime - lastClickTime > 500) {
-                lastClickTime = currentTime
-                val repoInfo = selectedAdapter.getRepoInfo(position)
-                selectedAdapter.removeRepo(position)
-                unselectedAdapter.addRepo(repoInfo)
-            }
-        }
+        //设置点击事件为空，取消基类进入url的点击事件
+        selectedAdapter.setOnItemClickListener {}
 
         viewModel.reposLiveData.observe(this) { result->
             val list = result.getOrNull()
@@ -89,6 +82,17 @@ class CollectionActivity : BaseShowActivity() {
                 repoInfoList = repoInfoList.filter {!mViewModel.isCollectRepoExist(it) }.toMutableList()
                 loadingProgressBar.visibility = ProgressBar.GONE
                 unselectedAdapter.setRepoList(repoInfoList)
+
+                // 防止在仓库数据刷新出来之前点击取消收藏，导致数据不一致
+                selectedAdapter.setOnItemClickListener { position ->
+                    val currentTime = System.currentTimeMillis()
+                    if (currentTime - lastClickTime > 500) {
+                        lastClickTime = currentTime
+                        val repoInfo = selectedAdapter.getRepoInfo(position)
+                        selectedAdapter.removeRepo(position)
+                        unselectedAdapter.addRepo(repoInfo)
+                    }
+                }
             } else {
                 "仓库信息获取失败".showToast(this)
                 result.exceptionOrNull()?.printStackTrace()

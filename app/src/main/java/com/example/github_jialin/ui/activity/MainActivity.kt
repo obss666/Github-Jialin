@@ -37,7 +37,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var mTabLayout: TabLayout
     private lateinit var mViewPager2: ViewPager2
     private lateinit var mToolbar: Toolbar
-    private lateinit var shadowLine: View
     private lateinit var mLoginName: TextView
     private lateinit var mAvatarImage: CircleImageView
     private lateinit var mDrawerLayout: DrawerLayout
@@ -58,7 +57,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         mToolbar = findViewById(R.id.mainToolbar)
-        shadowLine = findViewById(R.id.shadow_line)
         mTabLayout = findViewById(R.id.mainTabLayout)
         mViewPager2 = findViewById(R.id.mainViewPager)
         mLoginName = findViewById(R.id.loginNameMainTitle)
@@ -79,7 +77,7 @@ class MainActivity : AppCompatActivity() {
         mToolbar.setOnMenuItemClickListener { item ->
             when (item.itemId) {
                 R.id.moreInMenu -> {
-                    "clicked more".showToast(this)
+                    "创建议题".showToast(this)
                     true
                 }
 
@@ -103,17 +101,17 @@ class MainActivity : AppCompatActivity() {
         TabLayoutMediator(mTabLayout, mViewPager2) { tab, position ->
             when (position) {
                 0 -> {
-                    tab.text = getString(R.string.Home)
+                    tab.text = getString(R.string.home)
                     tab.icon = AppCompatResources.getDrawable(this, R.drawable.ic_home)
                 }
 
                 1 -> {
-                    tab.text = getString(R.string.Notifications)
+                    tab.text = getString(R.string.notifications)
                     tab.icon = AppCompatResources.getDrawable(this, R.drawable.ic_notification)
                 }
 
                 2 -> {
-                    tab.text = getString(R.string.Explore)
+                    tab.text = getString(R.string.explore)
                     tab.icon = AppCompatResources.getDrawable(this, R.drawable.ic_explore)
                 }
             }
@@ -175,13 +173,5 @@ class MainActivity : AppCompatActivity() {
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_main_toolbar, menu)
         return true
-    }
-
-    fun setShadowVisibility(visible: Boolean) {
-        if (visible) {
-            shadowLine.visibility = View.VISIBLE
-        } else {
-            shadowLine.visibility = View.GONE
-        }
     }
 }

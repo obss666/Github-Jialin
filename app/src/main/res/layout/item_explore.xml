@@ -28,17 +28,15 @@
                     android:id="@+id/repoName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="2222"
                     android:textStyle="bold"
                     android:textColor="@color/black"
-                    android:textSize="30sp"/>
+                    android:textSize="28sp"/>
                 <TextView
                     android:id="@+id/loginNameItemText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/repoName"
-                    android:textColor="@color/black"
-                    android:text="111">
+                    android:textColor="@color/black">
                 </TextView>
 
             </RelativeLayout>

@@ -32,6 +32,7 @@ class HomeFragment : Fragment() {
 
     private val TAG = "HomeFragment"
 
+    private lateinit var shadowLine: View
     private lateinit var mHomeSwipeRefresh :SwipeRefreshLayout
     private lateinit var mHomeNestedScrollView: NestedScrollView
     private lateinit var issuesItem: LinearLayout
@@ -58,6 +59,7 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        shadowLine = view.findViewById(R.id.homeShadowLine)
         mHomeSwipeRefresh = view.findViewById(R.id.homeSwipeRefresh)
         mHomeNestedScrollView = view.findViewById(R.id.homeNestedScrollView)
         issuesItem = view.findViewById(R.id.issuesItem)
@@ -76,6 +78,15 @@ class HomeFragment : Fragment() {
         }
 
         mHomeNestedScrollView.overScrollMode = View.OVER_SCROLL_IF_CONTENT_SCROLLS
+
+        mHomeNestedScrollView.viewTreeObserver.addOnScrollChangedListener {
+            val scrollY = mHomeNestedScrollView.scrollY
+            if (scrollY > 0) {
+                shadowLine.visibility = View.VISIBLE
+            } else {
+                shadowLine.visibility = View.GONE
+            }
+        }
 
         //我的工作
         issuesItem.setOnClickListener {
@@ -126,15 +137,6 @@ class HomeFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        mHomeNestedScrollView.viewTreeObserver.addOnScrollChangedListener {
-            val scrollY = mHomeNestedScrollView.scrollY
-            val activity = activity as? MainActivity
-            if (scrollY > 0) {
-                activity?.setShadowVisibility(true)
-            } else {
-                activity?.setShadowVisibility(false)
-            }
-        }
         refresh()
     }
 

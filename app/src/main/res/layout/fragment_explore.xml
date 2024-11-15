@@ -4,6 +4,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.fragment.ExploreFragment">
+    <View
+        android:id="@+id/exploreShadowLine"
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:visibility="gone"
+        android:background="@drawable/bar_shadow">
+    </View>
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/exploreSwipeRefresh"
         android:layout_width="match_parent"

@@ -27,6 +27,7 @@ class ExploreFragment : Fragment() {
     }
 
     private val mViewModel: ShowViewModel by activityViewModels()
+    private lateinit var shadowLine: View
     private lateinit var hotRecyclerView: RecyclerView
     private lateinit var exploreSwipeRefresh :SwipeRefreshLayout
 
@@ -41,9 +42,20 @@ class ExploreFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        shadowLine = view.findViewById(R.id.exploreShadowLine)
         hotRecyclerView = view.findViewById(R.id.hotRecyclerView)
         exploreSwipeRefresh = view.findViewById(R.id.exploreSwipeRefresh)
         hotRecyclerView.overScrollMode = View.OVER_SCROLL_NEVER
+
+        hotRecyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                if (dy > 0) {
+                    shadowLine.visibility = View.VISIBLE
+                } else {
+                    shadowLine.visibility = View.GONE
+                }
+            }
+        })
 
         exploreSwipeRefresh.setOnRefreshListener {
             refresh()
